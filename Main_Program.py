@@ -1,3 +1,6 @@
+import time
+
+
 class color:
     """Sets the color class, used for font of certain displays."""
     RED = '\033[31m'
@@ -15,6 +18,11 @@ def main():
      specific measurement between metric and U.S. systems. Then lastly ask the user whether they would like to run
      the system again, if yes, reruns the software, and if no, will thank the user and ends the software."""
     while True:
+        Input = input("Type Start to Start: ")
+        if Input == "Start":
+            print_number()
+            time.sleep(5)
+            print_unit()
         measurement_conversion()
         q = input("You would like to use the system again? (yes/no): ").lower()
         if q == 'yes':
@@ -26,6 +34,59 @@ def main():
             break
         else:
             break
+
+
+def print_number():
+    """Opens and closes the microservices"""
+    while True:
+        # Number 1
+        f = open("Request.txt", "w")
+        f.write("Sent")
+        f.close()
+        time.sleep(5)
+        f = open("Request.txt", "r")
+        print(f.readline())
+        f.close()
+        # Number 2
+        f = open("Request_2.txt", "w")
+        f.write("Sent")
+        f.close()
+        time.sleep(5)
+        f = open("Request_2.txt", "r")
+        print(f.readline())
+        f.close()
+        # Number 3
+        f = open("Request_3.txt", "w")
+        f.write("Sent")
+        f.close()
+        time.sleep(5)
+        f = open("Request_3.txt", "r")
+        print(f.readline())
+        f.close()
+
+        break
+
+
+def print_unit():
+    while True:
+        with open("unit_request.txt", "w") as outfile:
+            outfile.write("Sent")
+        time.sleep(5)
+
+        with open("unit_response.txt", "r") as infile:
+            unit = infile.read()
+            time.sleep(5)
+        print("1st Unit is:", unit)
+
+        with open("unit_request_2.txt", "w") as out_file:
+            out_file.write("send a unit")
+            time.sleep(5)
+
+        with open("unit_response_2.txt", "r") as in_file:
+            unit = in_file.read()
+            time.sleep(5)
+        print("2nd Unit is:", unit)
+        break
 
 
 def measurement_conversion():
